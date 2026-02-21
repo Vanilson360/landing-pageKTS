@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KatepaTech Solutions - Tecnologia simples para negócios que querem crescer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+                /* --- Rodapé Moderno --- */
+                .footer-main {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 2rem;
+                    flex-wrap: wrap;
+                }
+
+                .footer-logo {
+                    min-width: 220px;
+                }
+
+                .footer-social {
+                    margin-top: 1.2rem;
+                    display: flex;
+                    gap: 1.2rem;
+                }
+                .footer-social a {
+                    color: var(--branco);
+                    font-size: 1.5rem;
+                    transition: color 0.2s;
+                }
+                .footer-social a:hover {
+                    color: var(--azul-vibrante);
+                }
+
+                .footer-links {
+                    margin-top: 2.5rem;
+                    display: flex;
+                    gap: 2rem;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+                .footer-links a {
+                    color: var(--branco);
+                    text-decoration: none;
+                    font-weight: 500;
+                    opacity: 0.85;
+                    transition: color 0.2s, opacity 0.2s;
+                }
+                .footer-links a:hover {
+                    color: var(--azul-vibrante);
+                    opacity: 1;
+                }
+
+                .footer-divider {
+                    width: 100%;
+                    height: 1px;
+                    background: rgba(255,255,255,0.12);
+                    margin: 2.5rem 0 1.2rem 0;
+                }
+
+                .footer-bottom {
+                    text-align: center;
+                    color: rgba(255,255,255,0.7);
+                    font-size: 1rem;
+                    letter-spacing: 0.5px;
+                }
+
+                @media (max-width: 1024px) {
+                    .footer-main {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 2.5rem;
+                    }
+                }
+        :root {
+            --azul-escuro: #0F172A;
+            --azul-claro: #2563EB;
+            --azul-vibrante: #3B82F6;
+            --cinza-claro: #E5E7EB;
+            --branco: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--branco);
+            color: var(--azul-escuro);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            color: var(--azul-escuro);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--azul-claro), var(--azul-vibrante));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--azul-claro);
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navegação */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        
+        .logo-graphic {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-escuro) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-graphic:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(90deg, var(--azul-escuro), var(--azul-claro));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--azul-escuro);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--azul-claro);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--azul-claro);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Logo Principal na Capa */
+        .logo-hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-hero {
+            width: 340px;
+            height: 280px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--azul-escuro);
+            margin-bottom: 2.5rem;
+            box-shadow: 
+                0 20px 60px rgba(37, 99, 235, 0.15),
+                0 5px 15px rgba(0, 0, 0, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        
+        .logo-hero:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 30px 80px rgba(37, 99, 235, 0.25),
+                0 10px 30px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+        
+        .logo-hero:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(37, 99, 235, 0) 70%);
+            z-index: -1;
+        }
+        
+        .logo-hero-top {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 3.2rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, var(--azul-claro) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+            text-align: center;
+        }
+        
+        .logo-hero-divider {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--azul-claro), transparent);
+            margin: 0.5rem 0;
+        }
+        
+        .logo-hero-middle {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+            color: var(--azul-claro);
+            letter-spacing: 3px;
+            text-align: center;
+        }
+        
+        .logo-hero-bottom {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: var(--azul-escuro);
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            opacity: 0.9;
+        }
+        
+        .logo-hero-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            box-shadow: 
+                inset 0 0 50px rgba(37, 99, 235, 0.05),
+                0 0 80px rgba(37, 99, 235, 0.1);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .hero-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            color: var(--azul-escuro);
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 1px;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Slides */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 9rem 2rem 5rem;
+            position: relative;
+        }
+        
+        .slide-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .slide:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+        
+        /* Capa */
+        .capa {
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            color: var(--azul-escuro);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .capa:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 40%);
+            z-index: 1;
+        }
+        
+        .capa-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .capa h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .capa .subtitulo {
+            font-size: 1.5rem;
+            color: #64748B;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .capa .rodape {
+            font-size: 1.2rem;
+            color: var(--azul-claro);
+            margin-top: 3rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        /* Logo flutuante */
+        .floating-logo {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 100px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--azul-claro) 0%, var(--azul-escuro) 100%);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        
+        .floating-logo:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+        
+        .floating-logo:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.3);
+        }
+        
+        .floating-logo-top {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            line-height: 1;
+            z-index: 1;
+        }
+        
+        .floating-logo-bottom {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            z-index: 1;
+        }
+        
+        /* Listas e blocos */
+        .problema-item, .solucao-item, .produto-item, .publico-item, .modelo-item, .diferencial-item, .tracao-item, .equipe-item, .pedido-item {
+            background-color: var(--branco);
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+            transition: all 0.4s;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            height: 100%;
+        }
+        
+        .problema-item:hover, .solucao-item:hover, .produto-item:hover, .publico-item:hover, .modelo-item:hover, .diferencial-item:hover, .tracao-item:hover, .equipe-item:hover, .pedido-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+        
+        .problema-item i, .solucao-item i {
+            color: var(--azul-claro);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+        }
+
+        .produto-logo {
+            width: 100%;
+            height: 140px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+        
+        .grid-2, .grid-3 {
+            display: grid;
+            gap: 2.5rem;
+            margin-top: 1rem;
+        }
+        
+        .grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        /* Rodapé */
+        footer {
+            background: linear-gradient(135deg, #0B1324 0%, #111B32 55%, #172B4D 100%);
+            color: var(--branco);
+            padding: 4.2rem 0 2.6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-animate.will-reveal {
+            opacity: 0;
+            transform: translateY(36px);
+        }
+
+        .footer-animate.will-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 8% 18%, rgba(59, 130, 246, 0.2) 0%, transparent 30%),
+                radial-gradient(circle at 92% 80%, rgba(14, 165, 233, 0.18) 0%, transparent 35%);
+            z-index: 0;
+        }
+        
+        .footer-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2rem;
+            align-items: stretch;
+        }
+        
+        .footer-logo {
+            background: linear-gradient(160deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 22px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .logo-footer {
+            width: 100%;
+            flex: 1;
+            min-height: 220px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .logo-footer img {
+            width: 92%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            border-radius: 15px;
+        }
+        
+        .footer-social {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--branco);
+            font-size: 1.1rem;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+        }
+        
+        .footer-social a:hover {
+            transform: translateY(-3px);
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(191, 219, 254, 0.45);
+        }
+        
+        .footer-content {
+            background: linear-gradient(165deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 22px;
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .footer-content h3 {
+            color: white;
+            font-size: 1.65rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .footer-content p {
+            margin-bottom: 0;
+            opacity: 0.9;
+        }
+        
+        .footer-status {
+            margin-top: 0.6rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #22C55E;
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+            animation: pulseStatus 1.8s infinite;
+        }
+        
+        .footer-actions {
+            margin-top: 0.8rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .contato-btn,
+        .copy-email-btn {
+            border-radius: 999px;
+            padding: 0.95rem 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .contato-btn {
+            background: linear-gradient(90deg, var(--azul-claro), var(--azul-vibrante));
+            color: var(--branco);
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+        }
+        
+        .contato-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        .copy-email-btn {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--branco);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+        
+        .copy-email-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.09);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            background: rgba(59, 130, 246, 0.32);
+            transform: translateY(-2px);
+        }
+        
+        .footer-divider {
+            width: min(1200px, calc(100% - 4rem));
+            margin: 2rem auto 1rem;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.94rem;
+            letter-spacing: 0.3px;
+            position: relative;
+            z-index: 1;
+            padding: 0 1rem;
+        }
+        
+        /* Scroll progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: rgba(229, 231, 235, 0.3);
+            z-index: 1001;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--azul-claro), var(--azul-vibrante));
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 0 2px 2px 0;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .capa h1 {
+                font-size: 2.5rem;
+            }
+            
+            .capa .subtitulo {
+                font-size: 1.3rem;
+            }
+            
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-main {
+                grid-template-columns: 1fr;
+                padding: 0 1.2rem;
+            }
+            
+            .footer-content h3 {
+                font-size: 1.35rem;
+            }
+
+            .logo-footer {
+                min-height: 140px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--azul-escuro);
+                font-size: 1.5rem;
+                cursor: pointer;
+                z-index: 1002;
+            }
+            
+            .slide {
+                padding: 7rem 1.5rem 3rem;
+            }
+            
+            .logo-hero {
+                width: 220px;
+                height: 220px;
+            }
+
+            
+            .logo-hero-top {
+                font-size: 2.5rem;
+            }
+            
+            .logo-hero-middle {
+                font-size: 1.6rem;
+            }
+            
+            .floating-logo {
+                width: 65px;
+                height: 65px;
+                bottom: 20px;
+                right: 20px;
+                border-radius: 15px;
+            }
+            
+            .floating-logo-top {
+                font-size: 0.8rem;
+            }
+            
+            .floating-logo-bottom {
+                font-size: 0.5rem;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        @keyframes pulseStatus {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.55);
+            }
+            70% {
+                box-shadow: 0 0 0 9px rgba(34, 197, 94, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .logo-hero {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- Barra de progresso -->
+    <div class="scroll-progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Navegação -->
+    <nav>
+        <div class="nav-container">
+            <a href="#capa" class="logo-nav">
+                <div class="logo-graphic">
+                    <span style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.2rem; color: white;">KT</span>
+                </div>
+                <div class="logo-text">KatepaTech</div>
+            </a>
+            <div class="nav-links">
+                <a href="#problema">Problema</a>
+                <a href="#solucao">Solução</a>
+                <a href="#produtos">Produtos</a>
+                <a href="#publico">Público</a>
+                <a href="#modelo">Modelo</a>
+                <a href="#diferencial">Diferencial</a>
+                <a href="#tracao">Tração</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#pedido">Investimento</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Logo flutuante -->
+    <div class="floating-logo" id="floatingLogo">
+        <div class="floating-logo-top">KatepaTech</div>
+        <div class="floating-logo-bottom">SOLUTIONS</div>
+    </div>
+    
+    <!-- Slide 1 - Capa -->
+    <section id="capa" class="slide capa">
+        <div class="capa-content">
+            <div class="logo-hero-container">
+                <div class="logo-hero">
+                    <div class="logo-hero-top">KatepaTech</div>
+                    <div class="logo-hero-divider"></div>
+                    <div class="logo-hero-middle">SOLUTIONS</div>
+                    <div class="logo-hero-bottom">Softwares & Soluções Digitais</div>
+                    <div class="logo-hero-glow"></div>
+                </div>
+                <div class="hero-tagline">Tecnologia que transforma negócios locais</div>
+            </div>
+            
+            <h1 class="fade-in">Tecnologia simples para negócios que querem crescer</h1>
+            <p class="subtitulo fade-in delay-1">Desenvolvemos soluções digitais acessíveis e eficientes para impulsionar pequenas e médias empresas no mercado angolano
+            <p class="rodape fade-in delay-2">Pitch Deck para Investidores</p>
+        </div>
+    </section>
+    
+    <!-- Slide 2 - O Problema -->
+    <section id="problema" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">O Problema</h2>
+                <div class="grid-3">
+                    <div class="problema-item fade-in delay-1">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h3>Processos Manuais</h3>
+                        <p>Muitas empresas ainda dependem de processos manuais e informais, o que gera ineficiência, erros e perda de produtividade.</p>
+                    </div>
+                    <div class="problema-item fade-in delay-2">
+                        <i class="fas fa-globe-americas"></i>
+                        <h3>Softwares Estrangeiros</h3>
+                        <p>Softwares estrangeiros são caros, complexos e pouco adaptados à realidade local, dificultando a operação das empresas angolanas.</p>
+                    </div>
+                    <div class="problema-item fade-in delay-3">
+                        <i class="fas fa-headset"></i>
+                        <h3>Falta de Suporte</h3>
+                        <p>Falta suporte técnico próximo, em português, e soluções personalizadas para as necessidades específicas do mercado angolano.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 3 - A Solução -->
+    <section id="solucao" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">A Solução</h2>
+                <div class="grid-3">
+                    <div class="solucao-item fade-in delay-1">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Plataformas Simples</h3>
+                        <p>Desenvolvemos plataformas digitais simples, acessíveis e escaláveis para todos os tipos de negócios, com foco na experiência do usuário.</p>
+                    </div>
+                    <div class="solucao-item fade-in delay-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Mercado Local</h3>
+                        <p>Sistemas pensados para o mercado local, com funcionalidades adaptadas à realidade angolana e suporte em português.</p>
+                    </div>
+                    <div class="solucao-item fade-in delay-3">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Suporte Contínuo</h3>
+                        <p>Suporte contínuo e evolução baseada no uso real dos clientes, garantindo melhoria constante e alta satisfação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 4 - Produtos Iniciais -->
+    <section id="produtos" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">Produtos Iniciais</h2>
+                <div class="grid-3">
+                    <div class="produto-item fade-in delay-1">
+                        <h3>Marketplace Digital</h3>
+                        <p>Marketplace digital adaptado ao contexto local, conectando compradores e vendedores de forma eficiente e segura.</p>
+                    </div>
+                    <div class="produto-item fade-in delay-2">
+                        <h3>Sistemas de Gestão</h3>
+                        <p>Sistemas de gestão para pequenas e médias empresas, simplificando operações e aumentando produtividade com relatórios inteligentes.</p>
+                    </div>
+                    <div class="produto-item fade-in delay-3">
+                        <h3>Softwares Sob Medida</h3>
+                        <p>Softwares sob medida para empreendedores e startups, atendendo necessidades específicas de cada negócio com agilidade.</p>
+                    </div>
+                    <div class="produto-item fade-in delay-1">
+                        <img src="AfriCine+.png" alt="AfriCine+" class="produto-logo">
+                        <h3>AfriCine+</h3>
+                    </div>
+                    <div class="produto-item fade-in delay-2">
+                        <img src="logofunespar.png" alt="Funespar" class="produto-logo">
+                        <h3>SIGEPROF</h3>
+                    </div>
+                    <div class="produto-item fade-in delay-3">
+                        <img src="logokudibea.png" alt="KudiBea" class="produto-logo">
+                        <h3>KudiBea</h3>
+                    </div>
+                    <div class="produto-item fade-in delay-4">
+                        <img src="siapp1.png" alt="SIAPP" class="produto-logo">
+                        <h3>SIAPP</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 5 - Público-Alvo -->
+    <section id="publico" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">Público-Alvo</h2>
+                <div class="grid-3">
+                    <div class="publico-item fade-in delay-1">
+                        <h3>Pequenas e Médias Empresas</h3>
+                        <p>Empresas que buscam digitalizar processos, aumentar eficiência operacional e escalar seus negócios de forma sustentável.</p>
+                    </div>
+                    <div class="publico-item fade-in delay-2">
+                        <h3>Empreendedores e Comerciantes</h3>
+                        <p>Indivíduos que necessitam de soluções ágeis e acessíveis para gerir e expandir seus negócios no mercado digital.</p>
+                    </div>
+                    <div class="publico-item fade-in delay-3">
+                        <h3>Negócios em Digitalização</h3>
+                        <p>Empresas em processo de transformação digital que precisam de tecnologia adaptada à sua realidade e orçamento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 6 - Modelo de Negócio -->
+    <section id="modelo" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">Modelo de Negócio</h2>
+                <div class="grid-3">
+                    <div class="modelo-item fade-in delay-1">
+                        <h3>Assinaturas Mensais (SaaS)</h3>
+                        <p>Modelo de software como serviço com assinaturas mensais acessíveis e escaláveis, sem necessidade de investimento inicial alto.</p>
+                    </div>
+                    <div class="modelo-item fade-in delay-2">
+                        <h3>Desenvolvimento Sob Medida</h3>
+                        <p>Desenvolvimento de software personalizado para necessidades específicas dos clientes, com contratos de projeto.</p>
+                    </div>
+                    <div class="modelo-item fade-in delay-3">
+                        <h3>Taxas e Comissões</h3>
+                        <p>Taxas de uso e comissões em plataformas, alinhando nossos ganhos ao sucesso do cliente em modelos marketplace.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 7 - Diferencial Competitivo -->
+    <section id="diferencial" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">Diferencial Competitivo</h2>
+                <div class="grid-2">
+                    <div class="diferencial-item fade-in delay-1">
+                        <h3>Conhecimento do Mercado</h3>
+                        <p>Profundo conhecimento do mercado local e suas particularidades, com soluções desenvolvidas por angolano para angolano.</p>
+                    </div>
+                    <div class="diferencial-item fade-in delay-2">
+                        <h3>Equipe Técnica Própria</h3>
+                        <p>Equipe técnica própria e experiente, focada em qualidade, inovação e atendimento próximo aos clientes.</p>
+                    </div>
+                    <div class="diferencial-item fade-in delay-3">
+                        <h3>Tecnologia Acessível</h3>
+                        <p>Tecnologia moderna com custos acessíveis para empresas de todos os portes, democratizando o acesso a soluções digitais.</p>
+                    </div>
+                    <div class="diferencial-item fade-in delay-4">
+                        <h3>Soluções Simples e Eficientes</h3>
+                        <p>Soluções simples, rápidas e eficientes que resolvem problemas reais dos negócios, sem complexidades desnecessárias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 8 - Tração Inicial / Roadmap -->
+    <section id="tracao" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">Tração Inicial / Roadmap</h2>
+                <div class="grid-3">
+                    <div class="tracao-item fade-in delay-1">
+                        <h3>MVPs em Desenvolvimento</h3>
+                        <p>MVPs (Produtos Mínimos Viáveis) em desenvolvimento ativo e constante aprimoramento com feedback de usuários reais.</p>
+                    </div>
+                    <div class="tracao-item fade-in delay-2">
+                        <h3>Clientes Fundadores</h3>
+                        <p>Estratégia de clientes fundadores para validação e refinamento das soluções, criando cases de sucesso iniciais.</p>
+                    </div>
+                    <div class="tracao-item fade-in delay-3">
+                        <h3>Parcerias Locais</h3>
+                        <p>Parcerias locais em negociação para ampliação de mercado e distribuição, fortalecendo a presença regional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 9 - Equipe -->
+    <section id="equipe" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">Equipe</h2>
+                <div class="grid-3">
+                    <div class="equipe-item fade-in delay-1">
+                        <h3>Fundador</h3>
+                        <p>Desenvolvedor Full Stack com ampla experiência em tecnologia e negócios digitais, conhecedor do mercado angolano
+                    </div>
+                    <div class="equipe-item fade-in delay-2">
+                        <h3>Equipe Técnica</h3>
+                        <p>Equipe técnica multidisciplinar especializada em diferentes áreas da tecnologia, com foco em soluções práticas e eficientes.</p>
+                    </div>
+                    <div class="equipe-item fade-in delay-3">
+                        <h3>Foco Estratégico</h3>
+                        <p>Foco em produto, qualidade e escalabilidade para garantir o crescimento sustentável e a satisfação dos clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 10 - Pedido ao Investidor -->
+    <section id="pedido" class="slide">
+        <div class="container">
+            <div class="slide-content">
+                <h2 class="fade-in">Pedido ao Investidor</h2>
+                <div class="grid-3">
+                    <div class="pedido-item fade-in delay-1">
+                        <h3>Marketing e Aquisição</h3>
+                        <p>Investimento para marketing e aquisição de clientes, acelerando o crescimento da base de usuários e market share.</p>
+                    </div>
+                    <div class="pedido-item fade-in delay-2">
+                        <h3>Infraestrutura Cloud</h3>
+                        <p>Recursos para infraestrutura cloud de alta performance, garantindo escalabilidade, segurança e disponibilidade das plataformas.</p>
+                    </div>
+                    <div class="pedido-item fade-in delay-3">
+                        <h3>Expansão Comercial</h3>
+                        <p>Capital para expansão comercial e contratação de talentos estratégicos, ampliando capacidade de atendimento e desenvolvimento.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 4rem;">
+                    <h3 style="color: var(--azul-escuro); font-size: 2rem;">Invista ou faça uma parceria estratégica conosco!</h3>
+                    <p style="font-size: 1.2rem; margin-top: 1rem; colo r: #64748B;">Juntos, podemos transformar o mercado de tecnologia para negócios locais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Rodapé -->
+    <footer class="footer-animate">
+        <div class="footer-main">
+            <div class="footer-logo">
+                <div class="logo-footer">
+                    <img src="KatepaTechSoluctions.png" alt="KatepaTech Solutions">
+                </div>
+                <div class="footer-social">
+                    <a href="mailto:katepatechsolutions2022@gmail.com" title="E-mail" target="_blank" rel="noopener"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/5541988537474" title="WhatsApp" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/company/katepatech" title="LinkedIn" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/katepatech" title="Instagram" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-content">
+                <h3>Entre em Contato para Saber Mais</h3>
+                <p>KatepaTech Solutions - Software & Soluções Digitais</p>
+                <p>Tecnologia simples para negócios que querem crescer</p>
+                <p><a href="mailto:katepatechsolutions2022@gmail.com">katepatechsolutions2022@gmail.com</a> | <a href="https://wa.me/5541988537474" target="_blank" rel="noopener">(41) 98853-7474</a> Paraná, PR - Brasil</p>
+                <div class="footer-status">
+                    <span class="status-dot"></span>
+                    <span>Atendimento online agora • Hora local: <strong id="footerTime">--:--</strong></span>
+                </div>
+                <div class="footer-actions">
+                    <a href="https://wa.me/5541988537474?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20KatepaTech." class="contato-btn" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> Falar com Especialista
+                    </a>
+                    <button class="copy-email-btn" id="copyEmailBtn" data-email="katepatechsolutions2022@gmail.com">
+                        <i class="fas fa-copy"></i> Copiar E-mail
+                    </button>
+                </div>
+                <div class="footer-links">
+                    <a href="#problema">Problema</a>
+                    <a href="#solucao">Solução</a>
+                    <a href="#produtos">Produtos</a>
+                    <a href="#pedido">Investimento</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <span>&copy;2026 KatepaTech Solutions. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+    
+    <script>
+        // Barra de progresso de rolagem
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercentage + '%';
+        });
+        
+        // Menu mobile
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'var(--branco)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                navLinks.style.gap = '1.5rem';
+                navLinks.style.zIndex = '1000';
+            }
+        });
+        
+        // Fechar menu ao clicar em um link (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+        
+        // Navegação suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Logo flutuante - voltar ao topo
+        document.getElementById('floatingLogo').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Feedback visual do CTA no rodapé
+        const contatoBtn = document.querySelector('.contato-btn');
+        if (contatoBtn) {
+            contatoBtn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 140);
+            });
+        }
+        
+        // Copiar e-mail com fallback
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        if (copyEmailBtn) {
+            copyEmailBtn.addEventListener('click', async function() {
+                const email = this.dataset.email || '';
+                const original = this.innerHTML;
+                try {
+                    await navigator.clipboard.writeText(email);
+                    this.innerHTML = '<i class="fas fa-check"></i> E-mail Copiado';
+                    this.style.background = 'rgba(34, 197, 94, 0.24)';
+                } catch (err) {
+                    this.innerHTML = '<i class="fas fa-times"></i> Copie Manualmente';
+                    this.style.background = 'rgba(239, 68, 68, 0.25)';
+                }
+                setTimeout(() => {
+                    this.innerHTML = original;
+                    this.style.background = '';
+                }, 1800);
+            });
+        }
+        
+        // Hora local no rodapé
+        const footerTimeElement = document.getElementById('footerTime');
+        const updateFooterTime = () => {
+            if (!footerTimeElement) return;
+            footerTimeElement.textContent = new Intl.DateTimeFormat('pt-BR', {
+                hour: '2-digit',
+                minute: '2-digit'
+            }).format(new Date());
+        };
+        updateFooterTime();
+        setInterval(updateFooterTime, 60000);
+
+        // Entrada do rodape ao entrar na tela
+        const footerElement = document.querySelector('footer.footer-animate');
+        if (footerElement) {
+            if ('IntersectionObserver' in window) {
+                footerElement.classList.add('will-reveal');
+                const footerObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            footerElement.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.25 });
+                footerObserver.observe(footerElement);
+            } else {
+                footerElement.classList.add('is-visible');
+            }
+        }
+        
+        // Efeito de digitação para o slogan
+        const slogan = "Tecnologia simples para negócios que querem crescer";
+        const sloganElement = document.querySelector('.capa h1');
+        let i = 0;
+        
+        // Iniciar efeito de digitação quando a página carregar
+        window.addEventListener('load', function() {
+            sloganElement.innerHTML = "";
+            setTimeout(() => {
+                const typeWriter = () => {
+                    if (i < slogan.length) {
+                        sloganElement.innerHTML = slogan.substring(0, i+1) + '<span class="cursor">|</span>';
+                        i++;
+                        setTimeout(typeWriter, 50 + Math.random() * 30);
+                    } else {
+                        sloganElement.innerHTML = slogan;
+                    }
+                };
+                typeWriter();
+            }, 800);
+        });
+        
+        // Ajustar menu em redimensionamento da janela
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.position = 'static';
+                navLinks.style.backgroundColor = 'transparent';
+                navLinks.style.padding = '0';
+                navLinks.style.boxShadow = 'none';
+                navLinks.style.width = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
