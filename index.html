@@ -101,6 +101,10 @@
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
+
+        body.nav-open {
+            overflow: hidden;
+        }
         
         h1, h2, h3 {
             font-family: 'Poppins', sans-serif;
@@ -142,6 +146,7 @@
         p {
             margin-bottom: 1rem;
             font-size: 1.1rem;
+            overflow-wrap: anywhere;
         }
         
         .container {
@@ -170,6 +175,7 @@
             padding: 1.2rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
         
         .logo-nav {
@@ -202,6 +208,12 @@
         }
         
         .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .logo-text-main {
             font-family: 'Poppins', sans-serif;
             font-weight: 800;
             font-size: 1.6rem;
@@ -211,6 +223,16 @@
             color: transparent;
             letter-spacing: -0.5px;
         }
+
+        .logo-text-sub {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 0.7rem;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--azul-claro);
+            margin-top: 0.15rem;
+        }
         
         .nav-links {
             display: flex;
@@ -218,6 +240,9 @@
         }
         
         .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
             text-decoration: none;
             color: var(--azul-escuro);
             font-weight: 600;
@@ -225,6 +250,21 @@
             transition: all 0.3s;
             position: relative;
             padding: 0.5rem 0;
+        }
+
+        .nav-links a i {
+            font-size: 0.9rem;
+            color: #475569;
+            width: 1.45rem;
+            height: 1.45rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+            border: 1px solid rgba(37, 99, 235, 0.22);
+            box-shadow: 0 3px 10px rgba(37, 99, 235, 0.12);
+            transition: color 0.3s, transform 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
         
         .nav-links a:after {
@@ -241,9 +281,36 @@
         .nav-links a:hover {
             color: var(--azul-claro);
         }
-        
+
+        .nav-links a:hover i {
+            color: #1D4ED8;
+            transform: translateY(-1px) scale(1.05);
+            background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+            border-color: rgba(37, 99, 235, 0.45);
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.2);
+        }
+
+        .nav-links a.is-active {
+            color: var(--azul-claro);
+        }
+
+        .nav-links a.is-active i {
+            color: #1D4ED8;
+            background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+            border-color: rgba(37, 99, 235, 0.45);
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.2);
+        }
+
         .nav-links a:hover:after {
             width: 100%;
+        }
+
+        .nav-links a.is-active:after {
+            width: 100%;
+        }
+
+        .nav-backdrop {
+            display: none;
         }
         
         /* Logo Principal na Capa */
@@ -804,10 +871,12 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2rem;
+                overflow-wrap: anywhere;
             }
             
             h2 {
                 font-size: 1.8rem;
+                overflow-wrap: anywhere;
             }
             
             .capa h1 {
@@ -836,7 +905,48 @@
             }
             
             .nav-links {
-                display: none;
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100dvh;
+                width: min(88vw, 360px);
+                overflow-y: auto;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                border-left: 1px solid rgba(226, 232, 240, 0.9);
+                padding: 5.3rem 0.95rem 1rem;
+                box-shadow: -14px 0 36px rgba(15, 23, 42, 0.2);
+                gap: 0.5rem;
+                z-index: 1004;
+                transform: translateX(102%);
+                transition: transform 0.34s ease;
+                pointer-events: none;
+            }
+
+            .nav-links.mobile-open {
+                transform: translateX(0);
+                pointer-events: auto;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 0.75rem 0.85rem;
+                border-radius: 11px;
+                font-size: 0.98rem;
+                background: rgba(248, 250, 252, 0.92);
+                border: 1px solid rgba(226, 232, 240, 0.95);
+            }
+
+            .nav-links a:after {
+                left: 0.85rem;
+            }
+
+            .nav-links a:hover,
+            .nav-links a.is-active {
+                background: #EFF6FF;
+                border-color: rgba(37, 99, 235, 0.25);
             }
             
             .mobile-menu-btn {
@@ -846,7 +956,25 @@
                 color: var(--azul-escuro);
                 font-size: 1.5rem;
                 cursor: pointer;
+                z-index: 1005;
+                position: relative;
+            }
+
+            .nav-backdrop {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(15, 23, 42, 0.45);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.28s ease;
                 z-index: 1002;
+                border: none;
+            }
+
+            .nav-backdrop.is-visible {
+                opacity: 1;
+                pointer-events: auto;
             }
             
             .slide {
@@ -883,8 +1011,93 @@
                 font-size: 0.5rem;
             }
         }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-container {
+                padding: 0.95rem 1rem;
+            }
+
+            .nav-links {
+                width: min(92vw, 330px);
+                padding-top: 5rem;
+            }
+
+            .logo-graphic {
+                width: 38px;
+                height: 38px;
+            }
+
+            .logo-text-main {
+                font-size: 1.22rem;
+            }
+
+            .logo-text-sub {
+                font-size: 0.6rem;
+                letter-spacing: 1.2px;
+            }
+
+            .capa h1 {
+                font-size: 1.9rem;
+                line-height: 1.25;
+            }
+
+            .capa .subtitulo {
+                font-size: 1.06rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.04rem;
+                padding: 0 0.4rem;
+            }
+
+            .logo-hero {
+                width: 190px;
+                height: 190px;
+                border-radius: 22px;
+            }
+
+            .logo-hero-top {
+                font-size: 2rem;
+            }
+
+            .logo-hero-middle {
+                font-size: 1.2rem;
+                letter-spacing: 1.8px;
+            }
+
+            .logo-hero-bottom {
+                font-size: 0.88rem;
+                letter-spacing: 1px;
+            }
+
+            .slide {
+                padding: 6.3rem 1rem 2.6rem;
+            }
+
+            .problema-item, .solucao-item, .produto-item, .publico-item, .modelo-item, .diferencial-item, .tracao-item, .equipe-item, .pedido-item {
+                padding: 1.3rem;
+            }
+
+            .produto-logo {
+                height: 110px;
+            }
+        }
         
         @media (min-width: 769px) {
+            .nav-container {
+                justify-content: flex-start;
+                padding: 1.2rem 2rem 1.2rem 0.9rem;
+            }
+
+            .nav-links {
+                margin-left: 100px;
+                margin-right: auto;
+            }
+
             .mobile-menu-btn {
                 display: none;
             }
@@ -956,24 +1169,28 @@
                 <div class="logo-graphic">
                     <span style="font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.2rem; color: white;">KT</span>
                 </div>
-                <div class="logo-text">KatepaTech</div>
+                <div class="logo-text">
+                    <span class="logo-text-main">KatepaTech</span>
+                    <span class="logo-text-sub">Solutions</span>
+                </div>
             </a>
-            <div class="nav-links">
-                <a href="#problema">Problema</a>
-                <a href="#solucao">Solução</a>
-                <a href="#produtos">Produtos</a>
-                <a href="#publico">Público</a>
-                <a href="#modelo">Modelo</a>
-                <a href="#diferencial">Diferencial</a>
-                <a href="#tracao">Tração</a>
-                <a href="#equipe">Equipe</a>
-                <a href="#pedido">Investimento</a>
+            <div class="nav-links" id="mainNavLinks">
+                <a href="#problema"><i class="fas fa-circle-exclamation"></i> Problema</a>
+                <a href="#solucao"><i class="fas fa-lightbulb"></i> Solução</a>
+                <a href="#produtos"><i class="fas fa-cube"></i> Produtos</a>
+                <a href="#publico"><i class="fas fa-users"></i> Público</a>
+                <a href="#modelo"><i class="fas fa-chart-line"></i> Modelo</a>
+                <a href="#diferencial"><i class="fas fa-medal"></i> Diferencial</a>
+                <a href="#tracao"><i class="fas fa-rocket"></i> Tração</a>
+                <a href="#equipe"><i class="fas fa-user-tie"></i> Equipe</a>
+                <a href="#pedido"><i class="fas fa-handshake"></i> Investimento</a>
             </div>
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" type="button" aria-label="Abrir menu" aria-controls="mainNavLinks" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
+    <button class="nav-backdrop" id="navBackdrop" type="button" aria-label="Fechar menu"></button>
     
     <!-- Logo flutuante -->
     <div class="floating-logo" id="floatingLogo">
@@ -996,7 +1213,7 @@
             </div>
             
             <h1 class="fade-in">Tecnologia simples para negócios que querem crescer</h1>
-            <p class="subtitulo fade-in delay-1">Desenvolvemos soluções digitais acessíveis e eficientes para impulsionar pequenas e médias empresas no mercado angolano
+            <p class="subtitulo fade-in delay-1">Desenvolvemos soluções digitais acessíveis e eficientes para impulsionar pequenas e médias empresas no mercado angolano</p>
             <p class="rodape fade-in delay-2">Pitch Deck para Investidores</p>
         </div>
     </section>
@@ -1196,7 +1413,7 @@
                 <div class="grid-3">
                     <div class="equipe-item fade-in delay-1">
                         <h3>Fundador</h3>
-                        <p>Desenvolvedor Full Stack com ampla experiência em tecnologia e negócios digitais, conhecedor do mercado angolano
+                        <p>Desenvolvedor Full Stack com ampla experiência em tecnologia e negócios digitais, conhecedor do mercado angolano</p>
                     </div>
                     <div class="equipe-item fade-in delay-2">
                         <h3>Equipe Técnica</h3>
@@ -1232,7 +1449,7 @@
                 </div>
                 <div style="text-align: center; margin-top: 4rem;">
                     <h3 style="color: var(--azul-escuro); font-size: 2rem;">Invista ou faça uma parceria estratégica conosco!</h3>
-                    <p style="font-size: 1.2rem; margin-top: 1rem; colo r: #64748B;">Juntos, podemos transformar o mercado de tecnologia para negócios locais</p>
+                    <p style="font-size: 1.2rem; margin-top: 1rem; color: #64748B;">Juntos, podemos transformar o mercado de tecnologia para negócios locais</p>
                 </div>
             </div>
         </div>
@@ -1295,22 +1512,27 @@
         // Menu mobile
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
+        const navBackdrop = document.getElementById('navBackdrop');
+
+        const openMobileMenu = () => {
+            navLinks.classList.add('mobile-open');
+            navBackdrop.classList.add('is-visible');
+            document.body.classList.add('nav-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        };
+
+        const closeMobileMenu = () => {
+            navLinks.classList.remove('mobile-open');
+            navBackdrop.classList.remove('is-visible');
+            document.body.classList.remove('nav-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        };
         
         mobileMenuBtn.addEventListener('click', function() {
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
+            if (navLinks.classList.contains('mobile-open')) {
+                closeMobileMenu();
             } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.backgroundColor = 'var(--branco)';
-                navLinks.style.padding = '2rem';
-                navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-                navLinks.style.gap = '1.5rem';
-                navLinks.style.zIndex = '1000';
+                openMobileMenu();
             }
         });
         
@@ -1318,7 +1540,7 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function() {
                 if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
+                    closeMobileMenu();
                 }
             });
         });
@@ -1333,13 +1555,50 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    const navElement = document.querySelector('nav');
+                    const offset = navElement ? navElement.offsetHeight + 16 : 80;
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - offset,
                         behavior: 'smooth'
                     });
                 }
             });
         });
+
+        // Fechar menu mobile no backdrop e tecla Esc
+        navBackdrop.addEventListener('click', closeMobileMenu);
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Destaque do link ativo no header durante o scroll
+        const navSectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+        const navSections = navSectionLinks
+            .map((link) => document.querySelector(link.getAttribute('href')))
+            .filter((section) => section);
+
+        const updateActiveNavLink = () => {
+            if (!navSectionLinks.length || !navSections.length) return;
+
+            const currentScroll = window.scrollY + 140;
+            let activeSection = navSections[0];
+
+            navSections.forEach((section) => {
+                if (currentScroll >= section.offsetTop) {
+                    activeSection = section;
+                }
+            });
+
+            navSectionLinks.forEach((link) => {
+                const isActive = link.getAttribute('href') === `#${activeSection.id}`;
+                link.classList.toggle('is-active', isActive);
+            });
+        };
+
+        window.addEventListener('scroll', updateActiveNavLink);
+        window.addEventListener('load', updateActiveNavLink);
         
         // Logo flutuante - voltar ao topo
         document.getElementById('floatingLogo').addEventListener('click', function() {
@@ -1437,13 +1696,7 @@
         // Ajustar menu em redimensionamento da janela
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'row';
-                navLinks.style.position = 'static';
-                navLinks.style.backgroundColor = 'transparent';
-                navLinks.style.padding = '0';
-                navLinks.style.boxShadow = 'none';
-                navLinks.style.width = 'auto';
+                closeMobileMenu();
             }
         });
     </script>
