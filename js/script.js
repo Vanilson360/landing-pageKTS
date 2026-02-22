@@ -33,15 +33,6 @@
             }
         });
         
-        // Fechar menu ao clicar em um link (mobile)
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    closeMobileMenu();
-                }
-            });
-        });
-        
         // Navegação suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -62,16 +53,8 @@
             });
         });
 
-        // Fechar menu mobile no backdrop e tecla Esc
-        navBackdrop.addEventListener('click', closeMobileMenu);
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
-                closeMobileMenu();
-            }
-        });
-
-        // Destaque do link ativo no header durante o scroll
-        const navSectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+// Destaque do link ativo no header durante o scroll
+const navSectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
         const navSections = navSectionLinks
             .map((link) => document.querySelector(link.getAttribute('href')))
             .filter((section) => section);
